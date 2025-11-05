@@ -1,44 +1,43 @@
-import React from 'react';
-import Particles from '@tsparticles/react';
-import { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
-import { useEffect, useState } from 'react';
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { Particles } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import "./Home.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-function Home() {
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+export default function Home() {
+  const navigate = useNavigate();
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine);
   }, []);
 
   return (
-    <div className="home-page">
-      {init && (
-        <Particles
-          id="tsparticles"
-          options={{
-            background: { color: '#0d1b2a' },
-            particles: {
-              color: { value: '#ffffff' },
-              move: { enable: true, speed: 2 },
-              number: { value: 40 },
-              opacity: { value: 0.5 },
-              size: { value: 2 },
-            },
-          }}
-        />
-      )}
+    <section className="home-page">
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={{
+          background: { color: "transparent" },
+          fpsLimit: 60,
+          particles: {
+            color: { value: "#00FFFF" },
+            links: { color: "#00FFFF", distance: 150, enable: true, opacity: 0.3 },
+            move: { enable: true, speed: 1 },
+            number: { value: 50 },
+            opacity: { value: 0.5 },
+            size: { value: { min: 1, max: 3 } },
+          },
+        }}
+      />
       <div className="home-content" data-aos="fade-up">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Explore my projects and skills.</p>
-        <img src="profilephoto.jpeg" alt="My Profile" style={{ width: "200px", borderRadius: "50%" }} />
+        <img src="profilephoto.jpeg" alt="DESIKA S" className="profile-photo" />
+        <h2>Welcome to My Portfolio</h2>
+        <p>Full Stack Developer</p>
+        <button className="btn" onClick={() => navigate("/projects")}>
+          Explore My Work
+        </button>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Home;
