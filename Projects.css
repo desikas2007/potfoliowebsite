@@ -1,73 +1,107 @@
-.projects {
+.projects-page {
+  position: relative;
   min-height: 100vh;
+  background: #0a1420;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  background: #0a192f; /* deep navy background */
+  justify-content: center;
+  padding: 60px 20px;
   font-family: "Poppins", sans-serif;
-  color: #e6f1ff; /* soft light text */
-  padding: 40px 20px;
 }
 
-.projects h2 {
+#fire-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at center, #0c1e38 0%, #0a1420 100%);
+}
+
+.projects-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  width: 100%;
+  background: rgba(10, 20, 32, 0.55);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 45px 35px;
+  border: 1px solid rgba(0, 180, 255, 0.2);
+  box-shadow:
+    0 0 30px rgba(0, 120, 255, 0.35),
+    0 0 60px rgba(0, 200, 255, 0.15);
+}
+
+.projects-title {
+  text-align: center;
   font-size: 2.5rem;
-  color: #64ffda; /* cyan highlight */
-  margin-bottom: 30px;
-  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00bfff, #1e90ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 35px;
 }
 
+/* 🧩 Project Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  width: 85%;
-  max-width: 1000px;
+  gap: 25px;
 }
 
+/* 💎 Project Card */
 .project-card {
-  background: rgba(17, 34, 64, 0.8); /* slightly lighter navy box */
-  border-radius: 15px;
-  padding: 30px;
-  border: 1px solid rgba(100, 255, 218, 0.3);
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(100, 255, 218, 0.05);
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
-  border-color: #64ffda;
+  background: rgba(15, 25, 40, 0.6);
+  border-radius: 16px;
+  padding: 25px 20px;
+  color: #d0e8ff;
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
 }
 
 .project-card h3 {
-  font-size: 1.6rem;
-  color: #64ffda;
-  margin-bottom: 12px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #7fecff;
 }
 
 .project-card p {
-  color: #ccd6f6; /* soft light blue text */
   font-size: 1rem;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  color: #d6ecff;
 }
 
-/* Button styling */
+/* 🔗 GitHub Link */
 .project-link {
-  display: inline-block;
-  background-color: transparent;
-  border: 1.5px solid #64ffda;
-  color: #64ffda;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  color: #00bfff;
   font-weight: 600;
+  border: 1px solid rgba(0, 191, 255, 0.4);
+  padding: 8px 14px;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .project-link:hover {
-  background-color: #64ffda;
-  color: #0a192f;
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+/* 🌈 Highlight Animation */
+.project-card.highlight {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+  border-color: rgba(0, 255, 255, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-title {
+    font-size: 2rem;
+  }
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
 }
