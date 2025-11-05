@@ -1,43 +1,53 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { Particles } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+import React, { useEffect } from "react";
 import "./Home.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Header from "../components/Header"; // make sure header is imported
 
 export default function Home() {
-  const navigate = useNavigate();
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+  useEffect(() => {
+    // Load particles.js dynamically
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+    script.onload = () => {
+      window.particlesJS("particles-js", {
+        particles: {
+          number: { value: 50 },
+          color: { value: "#00ffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.3 },
+          size: { value: 3 },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00ffff",
+            opacity: 0.2,
+            width: 1,
+          },
+          move: { enable: true, speed: 1 },
+        },
+      });
+    };
+    document.body.appendChild(script);
   }, []);
 
   return (
-    <section className="home-page">
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: { color: "transparent" },
-          fpsLimit: 60,
-          particles: {
-            color: { value: "#00FFFF" },
-            links: { color: "#00FFFF", distance: 150, enable: true, opacity: 0.3 },
-            move: { enable: true, speed: 1 },
-            number: { value: 50 },
-            opacity: { value: 0.5 },
-            size: { value: { min: 1, max: 3 } },
-          },
-        }}
-      />
-      <div className="home-content" data-aos="fade-up">
-        <img src="profilephoto.jpeg" alt="DESIKA S" className="profile-photo" />
+    <div className="home-page">
+      <Header />
+
+      <div id="particles-js"></div>
+
+      <section className="hero-content" data-aos="fade-up">
+        {/* 👇 Replace with your actual image path */}
+        <img
+          src="profilephoto.jpeg"
+          alt="DESIKA S"
+          className="profile-photo"
+        />
         <h2>Welcome to My Portfolio</h2>
         <p>Full Stack Developer</p>
-        <button className="btn" onClick={() => navigate("/projects")}>
+        <a href="/projects" className="btn">
           Explore My Work
-        </button>
-      </div>
-    </section>
+        </a>
+      </section>
+    </div>
   );
 }
