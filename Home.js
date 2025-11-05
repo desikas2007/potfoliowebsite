@@ -1,53 +1,44 @@
-import React, { useEffect } from "react";
-import "./Home.css";
-import Header from "../components/Header"; // make sure header is imported
+import React from 'react';
+import Particles from '@tsparticles/react';
+import { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
+import { useEffect, useState } from 'react';
 
-export default function Home() {
+function Home() {
+  const [init, setInit] = useState(false);
+
   useEffect(() => {
-    // Load particles.js dynamically
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-    script.onload = () => {
-      window.particlesJS("particles-js", {
-        particles: {
-          number: { value: 50 },
-          color: { value: "#00ffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.3 },
-          size: { value: 3 },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#00ffff",
-            opacity: 0.2,
-            width: 1,
-          },
-          move: { enable: true, speed: 1 },
-        },
-      });
-    };
-    document.body.appendChild(script);
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
   return (
     <div className="home-page">
-      <Header />
-
-      <div id="particles-js"></div>
-
-      <section className="hero-content" data-aos="fade-up">
-        {/* 👇 Replace with your actual image path */}
-        <img
-          src="profilephoto.jpeg"
-          alt="DESIKA S"
-          className="profile-photo"
+      {init && (
+        <Particles
+          id="tsparticles"
+          options={{
+            background: { color: '#0d1b2a' },
+            particles: {
+              color: { value: '#ffffff' },
+              move: { enable: true, speed: 2 },
+              number: { value: 40 },
+              opacity: { value: 0.5 },
+              size: { value: 2 },
+            },
+          }}
         />
-        <h2>Welcome to My Portfolio</h2>
-        <p>Full Stack Developer</p>
-        <a href="/projects" className="btn">
-          Explore My Work
-        </a>
-      </section>
+      )}
+      <div className="home-content" data-aos="fade-up">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Explore my projects and skills.</p>
+        <img src="profilephoto.jpeg" alt="My Profile" style={{ width: "200px", borderRadius: "50%" }} />
+      </div>
     </div>
   );
 }
+
+export default Home;
