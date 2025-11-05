@@ -1,0 +1,24 @@
+.about {
+  min-height: 100vh; /* Take full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center;     /* Horizontally center */
+  text-align: center;
+  padding: 0 20px;
+  background: none; /* ❌ Removed dark gradient background */
+  color: #d9dbd5; /* Dark text for readability */
+  font-family: "Poppins", sans-serif;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #65a7ee; /* A nice blue accent */
+}
+
+.about p {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
