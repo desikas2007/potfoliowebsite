@@ -1,89 +1,52 @@
 .about-page {
   position: relative;
   min-height: 100vh;
-  background: #0a1420;
+  width: 100%;
   overflow: hidden;
-  font-family: "Poppins", sans-serif;
-  padding: 60px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  color: #e6f1ff;
+  font-family: "Poppins", sans-serif;
 }
 
-#fire-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(circle at center, #0c1e38 0%, #0a1420 100%);
-}
-
-.about {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
+/* AI Slide */
+.ai-slide {
   text-align: center;
-  background: rgba(10, 20, 32, 0.55);
-  backdrop-filter: blur(12px);
+  padding: 50px 40px;
+  background: rgba(10, 20, 35, 0.5);
+  border: 1px solid rgba(0, 150, 255, 0.2);
   border-radius: 18px;
-  padding: 45px 35px;
-  box-shadow: 
-    0 0 30px rgba(0, 120, 255, 0.35),
-    0 0 60px rgba(0, 200, 255, 0.15);
-  border: 1px solid rgba(0, 180, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 120, 255, 0.15);
+  cursor: pointer;
+  max-width: 800px;
+  transition: box-shadow 0.5s ease;
+  z-index: 1;
 }
 
-.typewriter {
-  font-size: 2.6rem;
+.ai-slide:hover {
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
+}
+
+.slide-title {
+  font-size: 2.2rem;
   background: linear-gradient(90deg, #00bfff, #1e90ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
-.about p {
-  font-size: 1.12rem;
-  line-height: 1.85;
-  color: #d0e8ff;
+.slide-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #cfe8ff;
+  margin-bottom: 15px;
 }
 
-.about strong {
-  color: #7fecff;
-}
-
-/* 🔹 Skills buttons */
-.skills {
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.skill-btn {
-  border: 2px solid #00bfff;
-  border-radius: 12px;
-  padding: 8px 15px;
-  background: rgba(10, 20, 32, 0.5);
-  color: #00ffff;
-  font-weight: 600;
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-.skill-btn.active {
-  transform: scale(1.1);
-  box-shadow: 0 0 18px #00ffff, 0 0 35px #1e90ff;
-  background: rgba(0, 191, 255, 0.15);
-}
-
-.skill-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #00bfff;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .typewriter { font-size: 2.1rem; }
-  .about p { font-size: 1rem; }
-  .skill-btn { padding: 6px 12px; font-size: 0.95rem; }
+.slide-hint {
+  font-size: 0.9rem;
+  color: rgba(200, 240, 255, 0.5);
+  letter-spacing: 0.05em;
 }
