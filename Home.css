@@ -1,13 +1,48 @@
+/* 🌌 Background setup (matches About & Contact pages) */
 .home-page {
   position: relative;
-  height: 100vh;
-  background: linear-gradient(135deg, #001f3f, #003366);
-  color: white;
-  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #020617 0%, #000814 100%);
+  color: #e6f1ff;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Background animation container */
+/* ✨ AI Glow Animated Lines */
+.home-page::before,
+.home-page::after {
+  content: "";
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.05),
+    rgba(0, 255, 255, 0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: moveLines 25s linear infinite;
+}
+
+.home-page::after {
+  animation-direction: reverse;
+  opacity: 0.25;
+}
+
+@keyframes moveLines {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-120px, -120px);
+  }
+}
+
+/* 🧩 Particle background layer */
 #particles-js {
   position: absolute;
   top: 0;
@@ -17,51 +52,88 @@
   z-index: 0;
 }
 
-/* Center hero section */
+/* 🪄 Hero content section */
 .hero-content {
   position: relative;
-  z-index: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  z-index: 2;
   text-align: center;
+  padding: 40px;
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.hero-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+/* 🧑‍💻 Profile Image */
 .profile-photo {
-  width: 220px;
-  height: 220px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  border: 3px solid #00ffff;
-  object-fit: cover;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
   margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transition: transform 0.4s ease;
 }
 
+.profile-photo:hover {
+  transform: rotate(3deg) scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+/* 🧭 Text Styling */
 .hero-content h2 {
-  color: #00ffff;
-  font-size: 2.3rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  color: #00e0ff;
+  text-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
+  margin-bottom: 15px;
 }
 
 .hero-content p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #e0f7fa;
+  color: #a3d7ff;
+  margin-bottom: 30px;
 }
 
+/* 🚀 Button */
 .btn {
-  padding: 10px 20px;
-  background: #00ffff;
-  color: #003366;
-  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #00e0ff, #00ffa3);
+  color: #02121d;
   font-weight: 600;
-  border-radius: 6px;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
 }
 
 .btn:hover {
-  background: #00b3b3;
-  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.6);
+}
+/* 🚀 Button (No underline + consistent style) */
+.btn {
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #00e0ff, #00ffa3);
+  color: #02121d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+  text-decoration: none; /* 👈 removes underline */
+  display: inline-block; /* keeps button shape consistent */
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.6);
+  text-decoration: none; /* ensure no underline even on hover */
 }
