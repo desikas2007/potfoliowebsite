@@ -1,20 +1,40 @@
+
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1b263b;
-  padding: 15px 40px;
+  padding: 15px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
 }
 
 .logo {
-  color: #64ffda;
+  color: #00ffff;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
-.nav a {
-  color: #ffffff;
-  margin-left: 20px;
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav a:hover {
-  color: #64ffda;
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #00ffff;
 }
