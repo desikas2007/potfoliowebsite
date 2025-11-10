@@ -14,7 +14,7 @@ const slides = [
   },
   {
     title: "My Skills",
-    text: "React, Firebase, Node.js, Python,c.c++,java— each one a piece of my evolving digital toolkit.",
+    text: "React, Firebase, Node.js, Python,C,C++,Java — each one a piece of my evolving digital toolkit.",
   },
   {
     title: "My Vision",
@@ -31,6 +31,7 @@ export default function About() {
     <div className="about-page">
       <NeuralBackground />
 
+      {/* Slide Section */}
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -46,6 +47,21 @@ export default function About() {
           <span className="slide-hint">(Tap to reveal next)</span>
         </motion.div>
       </AnimatePresence>
+
+      {/* Navigation Dots */}
+      <div className="slide-dots">
+        {slides.map((_, i) => (
+          <motion.div
+            key={i}
+            className={`dot ${i === index ? "active" : ""}`}
+            animate={{
+              scale: i === index ? [1, 1.3, 1] : 1,
+              opacity: i === index ? 1 : 0.5,
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
