@@ -14,7 +14,7 @@ const slides = [
   },
   {
     title: "My Skills",
-    text: "React, Firebase, Node.js, Python, Tailwind, MongoDB — each one a piece of my evolving digital toolkit.",
+    text: "React, Firebase, Node.js, Python,c.c++,java— each one a piece of my evolving digital toolkit.",
   },
   {
     title: "My Vision",
