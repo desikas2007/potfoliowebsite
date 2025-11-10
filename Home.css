@@ -1,169 +1,172 @@
-.home-page {
+.home-container {
   position: relative;
   height: 100vh;
   width: 100%;
-  background: radial-gradient(circle at top, #020617 0%, #000814 100%);
-  color: #e6f1ff;
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)),
+    url("/public/flower.png") no-repeat center center/cover;
+  filter: brightness(1.25);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 🌀 Particle background */
-#particles-js {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* 💫 Light aura background */
-.home-page::before {
-  content: "";
-  position: absolute;
-  width: 300%;
-  height: 300%;
-  background: conic-gradient(
-    from 0deg,
-    rgba(0, 255, 255, 0.05),
-    transparent,
-    rgba(0, 255, 255, 0.05)
-  );
-  animation: rotateLight 20s linear infinite;
-  filter: blur(120px);
-  z-index: 0;
-}
-@keyframes rotateLight {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* ✨ Hero Section (Split layout) */
-.hero-section {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  width: 85%;
-  margin: 0 auto;
-  gap: 40px;
-}
-
-/* Left content */
-.hero-content {
-  flex: 1;
-  max-width: 550px;
-  animation: fadeUp 1.4s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Right image */
-.hero-image {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-/* Glass style image frame */
-.image-glass {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
-  width: 270px;
-  height: 270px;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: 0.6s ease;
-}
-.image-glass:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 60px rgba(0, 255, 255, 0.3);
+/* 🌙 Slight overlay for clarity */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
-.profile-img {
+/* ✨ Floating Glow Particles */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(1.05) contrast(1.1);
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Text styling */
-.intro-line {
-  font-size: 2.8rem;
-  color: #00e0ff;
-  text-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
-  margin-bottom: 10px;
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: float 10s linear infinite;
+  opacity: 0.8;
 }
-.accent {
-  color: #00ffa3;
-  text-shadow: 0 0 10px rgba(0, 255, 150, 0.6);
+
+/* Create random particle sizes and movement speeds */
+.particle:nth-child(1) { width: 6px; height: 6px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
+.particle:nth-child(2) { width: 4px; height: 4px; left: 25%; animation-duration: 10s; animation-delay: 2s; }
+.particle:nth-child(3) { width: 8px; height: 8px; left: 40%; animation-duration: 14s; animation-delay: 4s; }
+.particle:nth-child(4) { width: 5px; height: 5px; left: 55%; animation-duration: 11s; animation-delay: 1s; }
+.particle:nth-child(5) { width: 7px; height: 7px; left: 70%; animation-duration: 13s; animation-delay: 3s; }
+.particle:nth-child(6) { width: 6px; height: 6px; left: 85%; animation-duration: 9s; animation-delay: 5s; }
+.particle:nth-child(7) { width: 5px; height: 5px; left: 90%; animation-duration: 15s; animation-delay: 6s; }
+
+@keyframes float {
+  0% {
+    transform: translateY(110vh) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
 }
+
+/* 🌸 Content Section */
+.content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* 🌺 Main Title — softened brightness & glow */
+.main-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.85); /* softer white */
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.4),
+    0 0 15px rgba(200, 220, 240, 0.25);
+  margin-bottom: 15px;
+  animation: softGlow 4s ease-in-out infinite alternate;
+}
+
+/* ✨ Softer glowing animation */
+@keyframes softGlow {
+  from {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.25),
+      0 0 10px rgba(200, 220, 240, 0.15);
+  }
+  to {
+    text-shadow:
+      0 0 12px rgba(255, 255, 255, 0.35),
+      0 0 20px rgba(180, 220, 255, 0.25);
+  }
+}
+
+/* Subtitle */
 .subtitle {
-  font-size: 1.4rem;
-  color: #8feaff;
-  margin-bottom: 10px;
-}
-.tagline {
-  font-size: 1rem;
-  color: #a3d7ff;
-  margin-bottom: 30px;
-  line-height: 1.5;
+  font-size: 1.6rem;
+  color: #e6f7ff;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-/* Buttons */
-.cta {
+/* 🌐 Menu */
+.menu {
   display: flex;
-  gap: 18px;
+  justify-content: center;
+  gap: 40px;
 }
 
-.btn {
-  padding: 13px 28px;
-  border-radius: 12px;
-  font-weight: 600;
+.menu-item {
+  font-size: 1.2rem;
+  color: #ffffff;
   text-decoration: none;
-  transition: all 0.4s ease;
-  font-size: 1rem;
-  box-shadow: 0 0 15px rgba(0, 255, 200, 0.25);
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
-.btn.main {
-  background: linear-gradient(90deg, #00e0ff, #00ffa3);
-  color: #02121d;
-}
-.btn.alt {
-  border: 2px solid #00e0ff;
-  color: #00e0ff;
-  background: transparent;
-}
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(0, 255, 200, 0.5);
+.menu-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
 }
 
-/* 📱 Responsive design */
-@media (max-width: 900px) {
-  .hero-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 30px;
+.menu-item:hover {
+  color: #b3e8ff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 3rem;
   }
 
-  .hero-content {
-    max-width: 100%;
+  .subtitle {
+    font-size: 1.2rem;
   }
 
-  .image-glass {
-    width: 200px;
-    height: 200px;
+  .menu {
+    flex-direction: column;
+    gap: 20px;
   }
-
-  .intro-line { font-size: 2.2rem; }
-  .subtitle { font-size: 1.2rem; }
 }
