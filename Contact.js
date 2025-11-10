@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import NeuralBackground from "../components/NeuralBackground"; // 👈 reuse the same AI background
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,10 +22,16 @@ export default function Contact() {
 
   return (
     <section className="contact-section">
-      <NeuralBackground /> {/* 🌌 AI glowing background */}
+      {/* Background flower effect */}
+      <div className="background-flower"></div>
+
+      {/* 🖋️ Large translucent left label */}
+      <div className="big-contact">CONTACT</div>
 
       <div className="contact-content">
         <h2>Get in Touch 🤖</h2>
+        <span className="email-address">📧 desikas2007@gmail.com</span>
+
         {sent && <div className="notice">✅ Message sent successfully!</div>}
 
         <form onSubmit={handleSubmit}>
@@ -58,13 +64,21 @@ export default function Contact() {
         </form>
 
         <footer className="social-footer">
-          <a href="https://www.linkedin.com/in/desika-s-370b55363" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.linkedin.com/in/desika-s-370b55363"
+            target="_blank"
+            rel="noreferrer"
+          >
             LinkedIn
           </a>
           <a href="https://github.com/desikas2007" target="_blank" rel="noreferrer">
             GitHub
           </a>
-          <a href="https://www.instagram.com/_itz_desika_s/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/_itz_desika_s/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Instagram
           </a>
         </footer>
