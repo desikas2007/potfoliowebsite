@@ -1,78 +1,134 @@
+/* 🌌 Contact Section */
 .contact-section {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #020617 0%, #000814 100%);
-  color: #e6f1ff;
   overflow: hidden;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* 🌸 Full HD background image */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg') center/cover no-repeat;
+  background-size: cover;
+  filter: brightness(0.4); /* darker overlay for contrast */
+  z-index: 0;
+}
+
+/* 🖋️ Big “CONTACT” word in background */
+.big-contact {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 🧾 Frosted glass contact container */
 .contact-content {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
   z-index: 2;
   width: 90%;
-  max-width: 500px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
+  max-width: 480px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  padding: 50px 35px;
   text-align: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.contact-content:hover {
+  transform: translateY(-50%) translateY(-5px);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+}
+
+/* Headings & text */
 .contact-content h2 {
-  font-size: 2.4rem;
-  color: #00e0ff;
-  text-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
-  margin-bottom: 25px;
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+.email-address {
+  display: block;
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Inputs & buttons */
 .contact-content form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
 .contact-content input,
 .contact-content textarea {
-  background: rgba(0, 10, 20, 0.6);
-  border: 1px solid rgba(0, 224, 255, 0.3);
-  border-radius: 12px;
-  padding: 12px;
-  color: #d9faff;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 15px;
+  padding: 14px;
+  color: #fff;
+  font-size: 1rem;
   outline: none;
   transition: 0.3s ease;
 }
 
+.contact-content input::placeholder,
+.contact-content textarea::placeholder {
+  color: #ccc;
+}
+
 .contact-content input:focus,
 .contact-content textarea:focus {
-  border-color: #00e0ff;
-  box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+  border-color: #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
 }
 
 .btn {
-  padding: 12px 25px;
+  padding: 14px 30px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #00e0ff, #00ffa3);
-  color: #02121d;
-  font-weight: 600;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #666, #000);
+  color: #fff;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
 .btn:hover {
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
   transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
+/* Notice message */
 .notice {
-  color: #00ffa3;
+  color: #fff;
   margin-bottom: 15px;
   font-weight: 500;
 }
 
+/* Social footer links */
 .social-footer {
   display: flex;
   justify-content: center;
@@ -81,42 +137,30 @@
 }
 
 .social-footer a {
-  color: #00e0ff;
+  color: #fff;
   text-decoration: none;
+  font-weight: 600;
   transition: 0.3s;
 }
 
 .social-footer a:hover {
-  text-shadow: 0 0 10px #00e0ff;
+  text-shadow: 0 0 15px rgba(255,255,255,0.5);
 }
 
-/* ✨ AI Glow Animated Lines */
-.contact-section::before,
-.contact-section::after {
-  content: "";
-  position: absolute;
-  width: 140%;
-  height: 140%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(0, 255, 255, 0.05),
-    rgba(0, 255, 255, 0.05) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  animation: moveLines 25s linear infinite;
-}
-
-.contact-section::after {
-  animation-direction: reverse;
-  opacity: 0.3;
-}
-
-@keyframes moveLines {
-  from {
-    transform: translateX(0) translateY(0);
+/* Responsive */
+@media (max-width: 1024px) {
+  .contact-content {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: translateY(0);
+    margin: 50px auto;
   }
-  to {
-    transform: translateX(-100px) translateY(-100px);
+  .big-contact {
+    font-size: 3rem;
+    left: 8%;
+  }
+  .contact-content h2 {
+    font-size: 2rem;
   }
 }
