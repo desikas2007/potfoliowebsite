@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import NeuralBackground from "../components/NeuralBackground";
 import "./About.css";
 
 const slides = [
   {
     title: "Who Am I?",
-    text: "I'm Desika S — a creative full-stack developer who loves turning ideas into interactive digital experiences.",
+    text: "A creative full-stack developer who loves turning ideas into interactive digital experiences.",
   },
   {
     title: "My Mission",
@@ -14,7 +13,7 @@ const slides = [
   },
   {
     title: "My Skills",
-    text: "React, Firebase, Node.js, Python,C,C++,Java — each one a piece of my evolving digital toolkit.",
+    text: "React, Firebase, Node.js, Python, C, C++, Java — each one a piece of my evolving digital toolkit.",
   },
   {
     title: "My Vision",
@@ -29,9 +28,7 @@ export default function About() {
 
   return (
     <div className="about-page">
-      <NeuralBackground />
 
-      {/* Slide Section */}
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -42,20 +39,20 @@ export default function About() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           onClick={nextSlide}
         >
-          <h2 className="slide-title">🤖 {slides[index].title}</h2>
+          <h2 className="slide-title">{slides[index].title}</h2>
           <p className="slide-text">{slides[index].text}</p>
           <span className="slide-hint">(Tap to reveal next)</span>
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Dots */}
+      {/* Navigation dots */}
       <div className="slide-dots">
         {slides.map((_, i) => (
           <motion.div
             key={i}
             className={`dot ${i === index ? "active" : ""}`}
             animate={{
-              scale: i === index ? [1, 1.3, 1] : 1,
+              scale: i === index ? [1, 1.25, 1] : 1,
               opacity: i === index ? 1 : 0.5,
             }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
