@@ -1,166 +1,130 @@
-/* 🌌 Contact Section */
+/* Background section */
 .contact-section {
   position: relative;
   min-height: 100vh;
+  width: 100%;
+  background: #000;
+  color: white;
   overflow: hidden;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
 }
 
-/* 🌸 Full HD background image */
+/* Flower background */
 .contact-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg') center/cover no-repeat;
-  background-size: cover;
-  filter: brightness(0.4); /* darker overlay for contrast */
+  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg')
+    center/cover no-repeat;
+  filter: brightness(0.25);
   z-index: 0;
 }
 
-/* 🖋️ Big “CONTACT” word in background */
+/* Big PROFILE on the left */
 .big-contact {
   position: absolute;
-  left: 5%;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 5rem;
-  font-weight: 900;
-  color: rgba(255,255,255,0.05);
-  text-transform: uppercase;
-  letter-spacing: 12px;
-  z-index: 2;
-  pointer-events: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 6rem;
+  letter-spacing: 8px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.1);
+  z-index: 1;
 }
 
-/* 🧾 Frosted glass contact container */
+/* Main content container centered */
 .contact-content {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
   z-index: 2;
   width: 90%;
-  max-width: 480px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  padding: 50px 35px;
+  max-width: 600px;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
 }
 
-.contact-content:hover {
-  transform: translateY(-50%) translateY(-5px);
-  box-shadow: 0 25px 80px rgba(0,0,0,0.7);
-}
-
-/* Headings & text */
-.contact-content h2 {
-  font-size: 2.5rem;
-  color: #fff;
-  font-weight: 900;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.email-address {
-  display: block;
-  margin-bottom: 25px;
-  color: #fff;
-  font-size: 1rem;
+/* CONTACT title */
+.main-title {
+  font-size: 3rem;
+  letter-spacing: 5px;
   font-weight: 600;
+  margin-bottom: 25px;
 }
 
-/* Inputs & buttons */
-.contact-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+/* Small description */
+.small-text {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
 }
 
-.contact-content input,
-.contact-content textarea {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 15px;
-  padding: 14px;
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.3s ease;
-}
-
-.contact-content input::placeholder,
-.contact-content textarea::placeholder {
-  color: #ccc;
-}
-
-.contact-content input:focus,
-.contact-content textarea:focus {
-  border-color: #fff;
-  box-shadow: 0 0 15px rgba(255,255,255,0.4);
-}
-
-.btn {
-  padding: 14px 30px;
-  border: none;
-  border-radius: 15px;
-  background: linear-gradient(90deg, #666, #000);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-}
-
-/* Notice message */
-.notice {
-  color: #fff;
-  margin-bottom: 15px;
+/* Email clickable */
+.email-text {
+  font-size: 2rem;
   font-weight: 500;
+  margin-bottom: 35px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* Social footer links */
+.email-link {
+  color: white;
+}
+
+.email-link:hover {
+  opacity: 0.6;
+}
+
+/* Get in touch */
+.get-in-touch {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* Social icons row */
 .social-footer {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  margin-top: 30px;
+  gap: 40px;
+  margin-top: 20px;
 }
 
 .social-footer a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+  color: white;
+  font-size: 2.2rem;
   transition: 0.3s;
 }
 
 .social-footer a:hover {
-  text-shadow: 0 0 15px rgba(255,255,255,0.5);
+  transform: scale(1.2);
+  opacity: 0.7;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .contact-content {
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: translateY(0);
-    margin: 50px auto;
-  }
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   .big-contact {
-    font-size: 3rem;
-    left: 8%;
+    font-size: 4rem;
+    left: 5px;
   }
-  .contact-content h2 {
-    font-size: 2rem;
+
+  .contact-content {
+    padding: 30px 20px;
+  }
+
+  .main-title {
+    font-size: 2.4rem;
+  }
+
+  .email-text {
+    font-size: 1.4rem;
   }
 }
