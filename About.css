@@ -1,132 +1,107 @@
+/* FULL PAGE with SAME CONTACT BACKGROUND */
 .about-page {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg')
+    center/cover no-repeat;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: transparent;
-  color: #e6f1ff;
+  align-items: center;
+  padding: 40px;
+  overflow: hidden;
+  color: white;
   font-family: "Poppins", sans-serif;
 }
 
-/* ✨ AI Slide Card */
+/* DARK OVERLAY same as contact page */
+.about-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 0;
+}
+
+/* Slide Card (Cleaner White-glass Version) */
 .ai-slide {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  padding: 50px 40px;
-  background: rgba(10, 20, 35, 0.5);
-  border: 1px solid rgba(0, 150, 255, 0.2);
-  border-radius: 18px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 20px rgba(0, 120, 255, 0.15);
+  padding: 45px 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
   cursor: pointer;
   max-width: 800px;
-  transition: box-shadow 0.5s ease, transform 0.5s ease;
-  z-index: 1;
+  transition: 0.3s ease;
 }
 
 .ai-slide:hover {
-  box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
-/* 🩵 Slide Texts */
+/* SLIDE TITLES - WHITE THEME */
 .slide-title {
-  font-size: 2.2rem;
-  background: linear-gradient(90deg, #00bfff, #1e90ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2.3rem;
+  color: white;
+  letter-spacing: 2px;
   margin-bottom: 18px;
-  letter-spacing: 1px;
 }
 
+/* Slide Body Text */
 .slide-text {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #cfe8ff;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.9;
   margin-bottom: 15px;
 }
 
+/* Tap to reveal next */
 .slide-hint {
   font-size: 0.9rem;
-  color: rgba(200, 240, 255, 0.5);
-  letter-spacing: 0.05em;
+  opacity: 0.7;
+  letter-spacing: 1px;
 }
 
-/* 🔵 Slide Navigation Dots */
+/* SLIDE NAVIGATION DOTS same white theme */
 .slide-dots {
   position: absolute;
   bottom: 40px;
   display: flex;
   gap: 12px;
-  justify-content: center;
-  width: 100%;
   z-index: 2;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: rgba(0, 180, 255, 0.3);
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  background: rgba(255,255,255,0.3);
+  transition: 0.3s;
 }
 
 .dot.active {
-  background: #00e0ff;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  background: white;
+  box-shadow: 0 0 12px white;
   transform: scale(1.2);
 }
 
-/* 💫 Floating Background Effect (Matching Other Pages) */
-.about-page::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 200, 255, 0.15), transparent 70%);
-  animation: pulseGlow 8s ease-in-out infinite alternate;
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes pulseGlow {
-  from {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-}
-
-/* ✨ Optional AI Grid Lines (Subtle tech feel) */
+/* Remove AI lines + colors from old theme */
 .about-page::after {
   content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(0, 255, 255, 0.05),
-    rgba(0, 255, 255, 0.05) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  animation: moveLines 25s linear infinite;
-  opacity: 0.25;
-  z-index: 0;
+  display: none;
 }
 
-@keyframes moveLines {
-  from {
-    transform: translateX(0) translateY(0);
+/* MOBILE */
+@media (max-width: 768px) {
+  .ai-slide {
+    padding: 35px 25px;
   }
-  to {
-    transform: translateX(-100px) translateY(-100px);
+  .slide-title {
+    font-size: 1.8rem;
   }
 }
