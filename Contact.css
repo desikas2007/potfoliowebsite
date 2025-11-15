@@ -1,130 +1,109 @@
-/* Background section */
+/* Entire contact section with your exact background image */
 .contact-section {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #000;
+  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg')
+    center/cover no-repeat;
   color: white;
-  overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 40px;
 }
 
-/* Flower background */
+/* Dark overlay to make text readable */
 .contact-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg')
-    center/cover no-repeat;
-  filter: brightness(0.25);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 0;
 }
 
-/* Big PROFILE on the left */
-.big-contact {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  font-size: 6rem;
-  letter-spacing: 8px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.1);
-  z-index: 1;
-}
-
-/* Main content container centered */
+/* All content in front */
 .contact-content {
+  position: relative;
   z-index: 2;
-  width: 90%;
-  max-width: 600px;
   text-align: center;
-  padding: 40px 20px;
-  background: rgba(0,0,0,0.45);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  max-width: 600px;
 }
 
 /* CONTACT title */
 .main-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-weight: 700;
   letter-spacing: 5px;
-  font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 /* Small description */
 .small-text {
-  font-size: 1.1rem;
   margin-bottom: 25px;
+  font-size: 1.2rem;
   opacity: 0.9;
 }
 
-/* Email clickable */
+/* Email */
 .email-text {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 35px;
-  text-decoration: none;
+  margin-bottom: 30px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.email-link {
-  color: white;
+.email-text:hover {
+  opacity: 0.7;
+  text-decoration: underline;
 }
 
-.email-link:hover {
-  opacity: 0.6;
-}
-
-/* Get in touch */
-.get-in-touch {
-  font-size: 1.3rem;
-  margin-bottom: 25px;
-  opacity: 0.9;
-}
-
-/* Social icons row */
+/* Icons Footer */
 .social-footer {
   display: flex;
-  justify-content: center;
-  gap: 40px;
+  gap: 30px;
+  font-size: 2rem;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .social-footer a {
   color: white;
-  font-size: 2.2rem;
   transition: 0.3s;
 }
 
 .social-footer a:hover {
-  transform: scale(1.2);
-  opacity: 0.7;
+  opacity: 0.6;
+  transform: scale(1.1);
 }
 
-/* Mobile responsiveness */
+/* COPYRIGHT text */
+.copyright {
+  position: relative;
+  z-index: 2;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.copyright:hover {
+  opacity: 1;
+  letter-spacing: 1px;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
-  .big-contact {
-    font-size: 4rem;
-    left: 5px;
-  }
-
-  .contact-content {
-    padding: 30px 20px;
-  }
-
   .main-title {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
 
   .email-text {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+
+  .social-footer {
+    font-size: 1.6rem;
   }
 }
