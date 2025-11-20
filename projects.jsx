@@ -1,57 +1,59 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Projects.css";
 
-const projects = [
-  {
-    title: "Food Stall Website",
-    image: "/foodimage.jpeg", // ✅ Correct path
-    link: "https://desikas2007.github.io/Food-Stall/",
-  },
-  {
-    title: "Portfolio Website",
-    image: "/portimage.jpeg", // ✅ Correct path
-    link: "https://desikas2007.github.io/PORTFOLIO/",
-  },
-  {
-    title: "Pothy’s Mart",
-    image: "/pothysimage.jpeg", // ✅ Correct path
-    link: "https://desikas2007.github.io/pothys-mart/",
-  },
-];
+// Importing images
+import foodImg from "../assets/foodimage.jpeg";
+import portImg from "../assets/portimage.jpeg";
+import pothysImg from "../assets/pothysimage.jpeg";
 
 export default function Projects() {
-  const [bgImage, setBgImage] = useState(null);
+  const projects = [
+    {
+      id: 1,
+      title: "Food Stall",
+      imgBack: foodImg,
+      github: "https://desikas2007.github.io/Food-Stall/",
+    },
+    {
+      id: 2,
+      title: "My portfolio",
+      imgBack: portImg,
+      github: "https://desikas2007.github.io/PORTFOLIO/",
+    },
+    {
+      id: 3,
+      title: "E-commerce website",
+      imgBack: pothysImg,
+      github: "https://desikas2007.github.io/pothys-mart/",
+    },
+  ];
 
   return (
-    <section
-      className={`projects-section ${bgImage ? "blur-active" : ""}`}
-      style={{
-        backgroundImage: bgImage ? `url(${bgImage})` : 'url("/flower.png")',
-      }}
-    >
-      {/* Dark overlay for readability */}
-      <div className="overlay"></div>
+    <div className="projects-page">
+      <h1 className="projects-title">My Projects</h1>
 
-      {/* Left big text */}
-      <div className="big-title">WORKS</div>
+      <div className="projects-row">
+        {projects.map((p) => (
+          <div className="project-card" key={p.id}>
+            <div className="card-inner">
 
-      {/* Project list (right side) */}
-      <div className="project-list">
-        {projects.map((p, index) => (
-          <div
-            key={index}
-            className="project-card"
-            onMouseEnter={() => setBgImage(p.image)}
-            onMouseLeave={() => setBgImage(null)}
-          >
-            <h3>
-              <a href={p.link} target="_blank" rel="noopener noreferrer">
-                {p.title}
-              </a>
-            </h3>
+              {/* FRONT → PROJECT NAME */}
+              <div className="card-front">
+                <h2>{p.title}</h2>
+              </div>
+
+              {/* BACK → IMAGE + GITHUB LINK */}
+              <div className="card-back">
+                <img src={p.imgBack} alt={p.title} className="back-img" />
+                <a href={p.github} target="_blank" rel="noreferrer" className="github-btn">
+                  🔗 GitHub Link
+                </a>
+              </div>
+
+            </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
