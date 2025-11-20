@@ -1,107 +1,93 @@
-/* FULL PAGE with SAME CONTACT BACKGROUND */
-.about-page {
+.about-section {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: url('https://images.pexels.com/photos/19863881/pexels-photo-19863881/free-photo-of-white-flower-in-black-and-white.jpeg')
-    center/cover no-repeat;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 40px;
-  overflow: hidden;
-  color: white;
-  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  padding: 60px;
+  gap: 60px;
+
+  background: url("https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg")
+    center/cover no-repeat;
 }
 
-/* DARK OVERLAY same as contact page */
-.about-page::before {
+.about-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.55);
   z-index: 0;
 }
 
-/* Slide Card (Cleaner White-glass Version) */
-.ai-slide {
-  position: relative;
+/* LEFT – IMAGE */
+.about-image-container {
   z-index: 2;
-  text-align: center;
-  padding: 45px 40px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.about-profile-img {
+  width: 330px;
+  height: 420px;
+  object-fit: cover;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
-  cursor: pointer;
-  max-width: 800px;
-  transition: 0.3s ease;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 0 25px rgba(255,255,255,0.2);
 }
 
-.ai-slide:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
-}
-
-/* SLIDE TITLES - WHITE THEME */
-.slide-title {
-  font-size: 2.3rem;
+/* RIGHT – CONTENT */
+.about-content {
+  z-index: 2;
+  max-width: 650px;
   color: white;
-  letter-spacing: 2px;
-  margin-bottom: 18px;
+  font-family: "Poppins", sans-serif;
+  padding: 30px 35px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.15);
 }
 
-/* Slide Body Text */
-.slide-text {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  opacity: 0.9;
+.about-title {
+  font-size: 2.7rem;
   margin-bottom: 15px;
-}
-
-/* Tap to reveal next */
-.slide-hint {
-  font-size: 0.9rem;
-  opacity: 0.7;
   letter-spacing: 1px;
 }
 
-/* SLIDE NAVIGATION DOTS same white theme */
-.slide-dots {
-  position: absolute;
-  bottom: 40px;
-  display: flex;
-  gap: 12px;
-  z-index: 2;
+.about-para {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  opacity: 0.95;
 }
 
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  transition: 0.3s;
+.skill-title {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 
-.dot.active {
-  background: white;
-  box-shadow: 0 0 12px white;
-  transform: scale(1.2);
+.skill-list {
+  margin-top: 10px;
+  padding-left: 18px;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
-/* Remove AI lines + colors from old theme */
-.about-page::after {
-  content: "";
-  display: none;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .ai-slide {
-    padding: 35px 25px;
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
   }
-  .slide-title {
-    font-size: 1.8rem;
+
+  .about-content {
+    padding: 25px;
+  }
+
+  .about-profile-img {
+    width: 260px;
+    height: 330px;
   }
 }
