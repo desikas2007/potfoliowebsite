@@ -1,125 +1,157 @@
-/* 🌤️ Section layout */
-.projects-section {
-  position: relative;
+/* PAGE BACKGROUND – HD Premium */
+.projects-page {
   min-height: 100vh;
-  width: 100%;
-  background: linear-gradient(rgba(240, 240, 240, 0.9), rgba(230, 230, 230, 0.9));
+  padding: 60px 0;
   color: #fff;
-  display: flex;
-  justify-content: flex-end; /* 👈 Move section content to right */
-  align-items: center;
-  padding: 60px 80px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.6s ease-in-out;
+
+  background: url("https://images.unsplash.com/photo-1602524207482-6f3f6f58f3bd?auto=format&fit=crop&w=1920&q=80")
+    center/cover no-repeat fixed;
+  position: relative;
 }
 
-/* Slight blur effect (reduced brightness for visibility but still clear) */
-.projects-section.blur-active::before {
+/* Soft Black Overlay */
+.projects-page::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  filter: blur(4px) brightness(0.95);
-  transform: scale(1.03);
+  background: rgba(0, 0, 0, 0.46);
   z-index: 0;
 }
 
-/* Softer overlay for clarity */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  transition: background 0.5s ease;
-}
-
-/* Big translucent “WORKS” text on left side */
-/* Big translucent “WORKS” text on left side */
-.big-title {
-  position: absolute;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12rem; /* ⬆️ made much larger */
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.25); /* ⬆️ a bit brighter for visibility */
-  letter-spacing: 10px;
-  text-transform: uppercase;
+/* CONTENT FIX – Keeps cards above overlay */
+.projects-content {
+  position: relative;
   z-index: 2;
-  pointer-events: none;
-  line-height: 1;
-  text-shadow: 0 0 40px rgba(255, 255, 255, 0.15); /* subtle glowing effect */
 }
 
+/* TITLE */
+.projects-title {
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  z-index: 2;
+  position: relative;
+}
 
-/* Project list (on right side of page) */
-.project-list {
-  z-index: 3;
+/* 3 CARDS IN ONE ROW */
+.projects-row {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+/* CARD */
+.project-card {
+  width: 330px;
+  height: 330px;
+  perspective: 1000px;
+}
+
+/* Inner flip animation */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease-in-out;
+}
+
+.project-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* FRONT SIDE → PROJECT NAME */
+.card-front {
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 26px;
+  font-weight: 600;
+  color: #00ffff;
+
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(6px);
+}
+
+/* BACK SIDE → IMAGE + GITHUB LINK */
+.card-back {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+
+  background: rgba(0, 0, 0, 0.8);
+
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  width: 90%;
-  max-width: 400px;
-  align-items: flex-end; /* 👈 positions entire column on right side */
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-bottom: 20px;
 }
 
-/* Project cards */
-.project-card {
+/* Image on back side */
+.back-img {
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
-  padding: 25px;
-  text-align: center; /* 👈 centers text inside each card */
-  cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-  backdrop-filter: blur(4px);
+  height: 80%;
+  object-fit: cover;
 }
 
-.project-card h3 {
-  font-size: 1.4rem;
-  font-weight: 600;
+/* GitHub Button */
+.github-btn {
+  margin-top: 15px;
   color: #fff;
-  margin: 0;
-}
-
-.project-card a {
+  font-size: 18px;
+  padding: 10px 22px;
+  border: 1px solid #00ffff;
+  border-radius: 8px;
   text-decoration: none;
-  color: inherit;
+  transition: 0.3s;
 }
 
-.project-card:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+.github-btn:hover {
+  background: #00ffff;
+  color: #000;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .projects-section {
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .projects-row {
     justify-content: center;
-    padding: 40px;
+    gap: 30px;
   }
+}
 
-  .big-title {
-    font-size: 3.5rem;
-    left: 8%;
-  }
-
-  .project-list {
-    align-items: center;
-  }
-
+@media (max-width: 768px) {
   .project-card {
-    width: 90%;
+    width: 280px;
+    height: 280px;
   }
+}
 
-  .project-card h3 {
-    font-size: 1.1rem;
+@media (max-width: 480px) {
+  .project-card {
+    width: 240px;
+    height: 240px;
   }
 }
