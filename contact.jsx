@@ -6,7 +6,7 @@ export default function Contact() {
     <section className="contact-section">
 
       <div className="contact-content">
-        <h1 className="main-title">CONTACT</h1>
+        <h1 className="main-title">GET IN TOUCH</h1>
 
         <p className="small-text">
           Please contact me at this e-mail address to discuss your site creation needs.
