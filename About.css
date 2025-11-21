@@ -1,3 +1,5 @@
+
+
 .about-section {
   position: relative;
   min-height: 100vh;
@@ -8,7 +10,7 @@
   padding: 60px;
   gap: 60px;
 
-  background: url("https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg")
+  background: url("https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8NGslMjBtb3VudGFpbnxlbnwwfHwwfHx8MA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000")
     center/cover no-repeat;
 }
 
@@ -20,7 +22,7 @@
   z-index: 0;
 }
 
-/* LEFT – IMAGE */
+/* LEFT – IMAGE CARD */
 .about-image-container {
   z-index: 2;
 }
@@ -30,11 +32,14 @@
   height: 420px;
   object-fit: cover;
   border-radius: 20px;
-  border: 2px solid rgba(255,255,255,0.3);
-  box-shadow: 0 0 25px rgba(255,255,255,0.2);
+
+  /* UPDATED BORDER */
+  border: 3px solid #1b8ebb;
+  
+  box-shadow: 0 0 20px rgba(27, 142, 187, 0.6);
 }
 
-/* RIGHT – CONTENT */
+/* RIGHT – ABOUT CARD */
 .about-content {
   z-index: 2;
   max-width: 650px;
@@ -43,9 +48,12 @@
   padding: 30px 35px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.25);
+  
+  /* UPDATED BORDER */
+  border: 2px solid #1b8ebb;
+
   backdrop-filter: blur(12px);
-  box-shadow: 0 0 30px rgba(255,255,255,0.15);
+  box-shadow: 0 0 30px rgba(27, 142, 187, 0.45);
 }
 
 .about-title {
