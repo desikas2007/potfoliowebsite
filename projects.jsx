@@ -46,7 +46,7 @@ export default function Projects() {
               <div className="card-back">
                 <img src={p.imgBack} alt={p.title} className="back-img" />
                 <a href={p.github} target="_blank" rel="noreferrer" className="github-btn">
-                  🔗 GitHub Link
+                  🔗 View Live
                 </a>
               </div>
 
