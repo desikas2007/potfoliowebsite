@@ -1,15 +1,12 @@
-/* PAGE BACKGROUND – HD Premium */
 .projects-page {
   min-height: 100vh;
   padding: 60px 0;
   color: #fff;
-
   background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80")
     center/cover no-repeat fixed;
   position: relative;
 }
 
-/* Soft Black Overlay */
 .projects-page::before {
   content: "";
   position: absolute;
@@ -18,13 +15,6 @@
   z-index: 0;
 }
 
-/* CONTENT FIX – Keeps cards above overlay */
-.projects-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* TITLE */
 .projects-title {
   text-align: center;
   font-size: 45px;
@@ -35,7 +25,7 @@
   position: relative;
 }
 
-/* 3 CARDS IN ONE ROW */
+/* CARDS ROW */
 .projects-row {
   width: 85%;
   margin: auto;
@@ -50,90 +40,83 @@
 /* CARD */
 .project-card {
   width: 330px;
-  height: 330px;
-  perspective: 1000px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid #1b8ebb;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  padding: 15px;
 }
 
-/* Inner flip animation */
-.card-inner {
-  width: 100%;
-  height: 100%;
+/* CARD FRONT */
+.card-front h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-front p {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* DRAGGABLE ITEMS */
+.project-card div[draggable="true"] {
+  transition: 0.2s;
+}
+
+/* UNLOCKED CONTENT */
+.unlocked-content {
+  margin-top: 15px;
+  text-align: center;
   position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.7s ease-in-out;
 }
 
-.project-card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* 🌟 FRONT SIDE → TRANSPARENT GLASSMORPHISM */
-.card-front {
-  background: rgba(255, 255, 255, 0.05); /* Transparent */
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 15px;
-  backdrop-filter: blur(10px); /* Glass blur */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 26px;
-  font-weight: 600;
-  color: #ffffff;
-
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-transform: uppercase;
-}
-
-/* 🌟 BACK SIDE → Also transparent matching background */
-.card-back {
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  overflow: hidden;
-
-  background: rgba(255, 255, 255, 0.08); /* Transparent */
-  backdrop-filter: blur(10px); /* Same glass blur */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-
-  padding-bottom: 20px;
-}
-
-/* Image on back side */
 .back-img {
   width: 100%;
-  height: 80%;
+  max-height: 150px;
   object-fit: cover;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  border: 2px solid #1b8ebb;
+  margin-top: 5px;
 }
 
-/* GitHub Button */
 .github-btn {
-  margin-top: 15px;
+  margin-top: 10px;
   color: #fff;
-  font-size: 18px;
-  padding: 10px 22px;
-  border: 1px solid #00ffff;
+  font-size: 16px;
+  padding: 8px 20px;
+  border: 1px solid #1b8ebb;
   border-radius: 8px;
   text-decoration: none;
   transition: 0.3s;
   backdrop-filter: blur(6px);
+  display: inline-block;
 }
 
 .github-btn:hover {
-  background: #00ffff;
+  background: #1b8ebb;
   color: #000;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: red;
 }
 
 /* RESPONSIVE */
@@ -147,13 +130,11 @@
 @media (max-width: 768px) {
   .project-card {
     width: 280px;
-    height: 280px;
   }
 }
 
 @media (max-width: 480px) {
   .project-card {
     width: 240px;
-    height: 240px;
   }
 }
