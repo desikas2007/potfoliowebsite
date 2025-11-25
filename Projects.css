@@ -1,131 +1,179 @@
 .projects-page {
-  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  background: #111827;
+  padding: 100px 20px 60px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding-top: 120px;
+  overflow: hidden;           /* NO SCROLLBAR */
+  box-sizing: border-box;
 }
 
+/* Title */
 .projects-title {
   font-size: 64px;
   font-weight: 900;
-  text-align: center;
   color: #00cfff;
-  margin-bottom: 60px;
-  text-shadow: 0 0 30px rgba(0, 207, 255, 0.5);
+  text-shadow: 0 0 40px rgba(0, 207, 255, 0.7);
+  margin-bottom: 30px;
   animation: sketchDrawText 2.5s ease-in-out;
 }
 
 @keyframes sketchDrawText {
-  0% { clip-path: inset(0 100% 0 0); }
-  100% { clip-path: inset(0 0 0 0); }
+  0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+  100% { clip-path: inset(0 0 0 0); opacity: 1; }
 }
 
-.projects-row {
+/* Filter Buttons */
+.filter-buttons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 0 40px;
-  max-width: 1400px;
+  gap: 20px;
+  margin-bottom: 50px;
 }
 
-.project-card {
-  width: 380px;
-  height: 480px;
-  perspective: 1500px;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.4s ease;
-  animation: sketchReveal 1.5s ease-out; /* Sketch card reveal */
-  border: 2px solid transparent; /* For future SVG sketch if needed */
+.filter-btn {
+  padding: 14px 40px;
+  background: rgba(0, 207, 255, 0.15);
+  color: #00cfff;
+  border: 2px solid #00cfff;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 17px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 207, 255, 0.3);
+  transition: all 0.4s ease;
 }
 
-@keyframes sketchReveal {
-  0% { opacity: 0; transform: scale(0.8) rotate(-5deg); filter: blur(5px); }
-  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
-}
-
-.project-card:hover {
-  box-shadow: 0 30px 80px rgba(0, 207, 255, 0.5);
-}
-
-.card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
-}
-
-.project-card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 28px;
-}
-
-.card-front {
-  background: #1f2937;
-}
-
-.front-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.front-text {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 24px;
-  background: linear-gradient(0deg, rgba(0,0,0,0.9), transparent);
-  color: white;
-}
-
-.front-text h2 {
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.card-back {
-  transform: rotateY(180deg);
-  background: #1f2937;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.back-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 28px;
-}
-
-.github-btn {
-  position: absolute;
-  bottom: 30px;
-  padding: 14px 36px;
+.filter-btn.active,
+.filter-btn:hover {
   background: #00cfff;
   color: #111827;
-  font-weight: 700;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 207, 255, 0.6);
+}
+
+/* FIXED SIZE GRID - 3 small cards in a row */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;   /* Exactly 3 cards */
+  gap: 30px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* SMALL FIXED CARD - Perfect size */
+.project-card {
+  width: 340px;               /* Fixed width */
+  height: 460px;              /* Fixed height - full content visible */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 207, 255, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease;
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  margin: 0 auto;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.3s; }
+.project-card:nth-child(2) { animation-delay: 0.5s; }
+.project-card:nth-child(3) { animation-delay: 0.7s; }
+
+.project-card:hover {
+  transform: translateY(-12px);
+  border-color: #00cfff;
+  box-shadow: 0 30px 70px rgba(0, 207, 255, 0.4);
+}
+
+/* Image - fits perfectly */
+.card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 3px solid #00cfff;
+}
+
+/* Content - all visible */
+.card-content {
+  padding: 20px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(0, 207, 255, 0.4);
+}
+
+.card-content p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+/* Buttons */
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 11px 16px;
   border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 207, 255, 0.4);
-  text-decoration: none; /* No underline */
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.4s ease;
 }
 
-.github-btn:hover {
-  background: #00e0ff;
-  transform: none !important;
+.repo-btn {
+  background: rgba(0, 207, 255, 0.15);
+  color: #00cfff;
+  border: 2px solid #00cfff;
 }
 
-@media (max-width: 900px) {
-  .project-card { width: 90%; height: 420px; }
+.demo-btn {
+  background: #00cfff;
+  color: #111827;
+}
+
+.action-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 207, 255, 0.5);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile - stack vertically */
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+  }
+  .project-card {
+    width: 100%;
+    height: 480px;
+  }
+}
+/* Make active button glow stronger */
+.filter-btn.active {
+  background: #00cfff !important;
+  color: #111827 !important;
+  box-shadow: 0 15px 40px rgba(0, 207, 255, 0.7) !important;
+  transform: translateY(-5px);
 }
