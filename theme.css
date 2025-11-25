@@ -1,0 +1,133 @@
+/* =============================================
+   THEME.CSS – FINAL 100% FIXED + ZERO SCROLLBAR
+   • No scrollbar (white/blue/any) EVER
+   • Every page exactly 100vh, no overflow
+   • No layout shift, no shaking
+   • Montserrat + Cyan Neon Glow
+   • Sketch shine effect kept
+============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  outline: none;
+  text-decoration: none !important;
+}
+
+/* LOCK BODY — NO SCROLLBAR, NO OVERFLOW EVER */
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #111827;
+  color: #ffffff;
+  overflow: hidden;                  /* MAIN FIX: BLOCK ALL SCROLL */
+  -ms-overflow-style: none;          /* IE & Edge */
+  scrollbar-width: none;             /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* EACH PAGE = EXACTLY 100VH, NO SCROLL INSIDE */
+.home-page,
+.about-page,
+.projects-page,
+.contact-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;          /* Fixed height */
+  height: 100dvh;         /* Best mobile support */
+  padding-top: 80px;      /* Space for fixed header */
+  background: #111827;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;       /* No internal scroll */
+}
+
+/* HEADER — FIXED & CLEAN */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 50px;
+  background: rgba(17, 24, 39, 0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.header-bar .logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #00cfff;
+  letter-spacing: 1px;
+}
+
+.header-bar .nav-links {
+  display: flex;
+  gap: 36px;
+}
+
+.header-bar .nav-links a {
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.3s ease;
+}
+
+.header-bar .nav-links a:hover {
+  color: #00cfff;
+}
+
+/* BUTTONS */
+.btn, .github-btn, .contact-email {
+  padding: 14px 36px;
+  background: #00cfff;
+  color: #111827;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 8px 30px rgba(0, 207, 255, 0.35);
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn:hover, .github-btn:hover, .contact-email:hover {
+  background: #00e0ff;
+  box-shadow: 0 12px 40px rgba(0, 224, 255, 0.5);
+}
+
+/* SKETCH SHINE EFFECT (cute glowing sweep) */
+.sketch-title {
+  position: relative;
+  display: inline-block;
+  color: #00cfff;
+  text-shadow: 0 0 30px rgba(0, 207, 255, 0.5);
+}
+
+.sketch-title::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 207, 255, 0.3), transparent);
+  animation: sketchShine 3.5s infinite;
+}
+
+@keyframes sketchShine {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
