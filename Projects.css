@@ -1,140 +1,131 @@
 .projects-page {
-  min-height: 100vh;
-  padding: 60px 0;
-  color: #fff;
-  background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80")
-    center/cover no-repeat fixed;
-  position: relative;
-}
-
-.projects-page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.46);
-  z-index: 0;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 120px;
 }
 
 .projects-title {
+  font-size: 64px;
+  font-weight: 900;
   text-align: center;
-  font-size: 45px;
-  margin-bottom: 50px;
-  letter-spacing: 2px;
-  color: #ffffff;
-  z-index: 2;
-  position: relative;
+  color: #00cfff;
+  margin-bottom: 60px;
+  text-shadow: 0 0 30px rgba(0, 207, 255, 0.5);
+  animation: sketchDrawText 2.5s ease-in-out;
 }
 
-/* CARDS ROW */
+@keyframes sketchDrawText {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
 .projects-row {
-  width: 85%;
-  margin: auto;
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
   flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 40px;
+  max-width: 1400px;
 }
 
-/* CARD */
 .project-card {
-  width: 330px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 2px solid #1b8ebb;
-  border-radius: 15px;
-  backdrop-filter: blur(12px);
-  padding: 15px;
+  width: 380px;
+  height: 480px;
+  perspective: 1500px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.4s ease;
+  animation: sketchReveal 1.5s ease-out; /* Sketch card reveal */
+  border: 2px solid transparent; /* For future SVG sketch if needed */
 }
 
-/* CARD FRONT */
-.card-front h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  text-align: center;
+@keyframes sketchReveal {
+  0% { opacity: 0; transform: scale(0.8) rotate(-5deg); filter: blur(5px); }
+  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
 }
 
-.card-front p {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 10px;
+.project-card:hover {
+  box-shadow: 0 30px 80px rgba(0, 207, 255, 0.5);
 }
 
-/* DRAGGABLE ITEMS */
-.project-card div[draggable="true"] {
-  transition: 0.2s;
-}
-
-/* UNLOCKED CONTENT */
-.unlocked-content {
-  margin-top: 15px;
-  text-align: center;
+.card-inner {
+  width: 100%;
+  height: 100%;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.project-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 28px;
+}
+
+.card-front {
+  background: #1f2937;
+}
+
+.front-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.front-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9), transparent);
+  color: white;
+}
+
+.front-text h2 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back-img {
   width: 100%;
-  max-height: 150px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #1b8ebb;
-  margin-top: 5px;
+  border-radius: 28px;
 }
 
 .github-btn {
-  margin-top: 10px;
-  color: #fff;
-  font-size: 16px;
-  padding: 8px 20px;
-  border: 1px solid #1b8ebb;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-  backdrop-filter: blur(6px);
-  display: inline-block;
+  position: absolute;
+  bottom: 30px;
+  padding: 14px 36px;
+  background: #00cfff;
+  color: #111827;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 207, 255, 0.4);
+  text-decoration: none; /* No underline */
 }
 
 .github-btn:hover {
-  background: #1b8ebb;
-  color: #000;
+  background: #00e0ff;
+  transform: none !important;
 }
 
-/* CLOSE BUTTON */
-.close-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(255, 0, 0, 0.7);
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
-.close-btn:hover {
-  background: red;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .projects-row {
-    justify-content: center;
-    gap: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .project-card {
-    width: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-card {
-    width: 240px;
-  }
+@media (max-width: 900px) {
+  .project-card { width: 90%; height: 420px; }
 }
