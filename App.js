@@ -1,17 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import "./App.css";
+import "./styles/theme.css";
 
-
-function App() {
+export default function App() {
   return (
     <Router>
-      <Header />
+     
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -21,5 +20,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
