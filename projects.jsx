@@ -1,79 +1,83 @@
-import React from "react";
-import "../styles/theme.css";
+import React, { useState } from "react";
 import "../styles/Projects.css";
-import { Link } from "react-router-dom";
-
-// Project images
-import foodImg from "../assets/foodimage.jpeg";
-import portImg from "../assets/portimage.jpeg";
-import pothysImg from "../assets/pothysimage.jpeg";
-
-// Front sticker images
-import foodSticker from "../assets/food-sticker.jpeg";
-import portSticker from "../assets/port-sticker.jpeg";
-import ecomSticker from "../assets/ecom-sticker.jpeg";
 
 export default function Projects() {
-  const projects = [
+  const [filter, setFilter] = useState("web");
+
+  const webProjects = [
     {
-      id: 1,
       title: "Food Stall",
-      desc: "A cute food ordering app",
-      imgFront: foodSticker,
-      imgBack: foodImg,
-      github: "https://desikas2007.github.io/Food-Stall/",
+      desc: "A cute and modern food ordering app with smooth animations and clean UI.",
+      img: "https://img.freepik.com/free-psd/food-menu-restaurant-web-banner-template_120329-4909.jpg?semt=ais_hybrid&w=740&q=80", // your actual project
+      demo: "https://desikas2007.github.io/Food-Stall/"
     },
     {
-      id: 2,
       title: "My Portfolio",
-      desc: "Personal portfolio website",
-      imgFront: portSticker,
-      imgBack: portImg,
-      github: "https://desikas2007.github.io/PORTFOLIO/",
+      desc: "Personal portfolio website with glassmorphism, neon glow, and sketch animations.",
+      img: "https://image.slidesdocs.com/responsive-images/slides/0-blue-simple-personal-portfolio-powerpoint-background_d30f33114b__960_540.jpg", // your actual portfolio
+      demo: "https://desikas2007.github.io/PORTFOLIO/"
     },
     {
-      id: 3,
-      title: "E-commerce website",
-      desc: "Online shopping platform",
-      imgFront: ecomSticker,
-      imgBack: pothysImg,
-      github: "https://desikas2007.github.io/pothys-mart/",
+      title: "E-commerce Website",
+      desc: "Online shopping platform with product filtering, cart system, and responsive design.",
+      img: "https://img.freepik.com/free-photo/black-friday-sales-sign-neon-light_23-2151833076.jpg?semt=ais_hybrid&w=740&q=80", // your actual ecom
+      demo: "https://desikas2007.github.io/pothys-mart/"
     },
   ];
 
+  const mobileProjects = [
+    {
+      title: "Sakura Notes",
+      desc: "Beautiful anime-themed note-taking app with cloud sync, stickers, and pastel themes.",
+      img: "https://cdn.dribbble.com/userupload/15861996/file/original-dffe52a7ba5b3062923ef5ae2f995064.png?resize=400x0", // cute pink notes app
+      demo: "#"
+    },
+    {
+      title: "Kawaii Weather",
+      desc: "Adorable weather app with anime characters that change with mood and seasons.",
+      img: "https://static.vecteezy.com/system/resources/thumbnails/003/774/267/small/weather-check-cartoon-smartphone-interface-templates-set-winter-overcast-mobile-app-screen-page-day-and-dark-mode-design-forecast-ui-for-application-phone-display-with-flat-character-vector.jpg", // anime girl + weather
+      demo: "#"
+    },
+    {
+      title: "Anime Habit",
+      desc: "Cute habit tracker with anime rewards, daily quests, and kawaii animations.",
+      img: "https://cdn.dribbble.com/userupload/17261365/file/original-82743882490cdb98157f2f2e3e6d0030.png?resize=400x0", // anime girl with checklist
+      demo: "#"
+    },
+  ];
+
+  const currentProjects = filter === "web" ? webProjects : mobileProjects;
+
   return (
     <div className="projects-page">
-      {/* Header */}
-      <header className="header-bar">
-        <h2 className="logo">DESIKA PORTFOLIO</h2>
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-        </nav>
-      </header>
+      <h1 className="projects-title sketch-title">MY PROJECTS</h1>
 
-      <h1 className="projects-title animated-title">MY PROJECTS</h1>
+      <div className="filter-buttons">
+        <button
+          className={`filter-btn ${filter === "web" ? "active" : ""}`}
+          onClick={() => setFilter("web")}
+        >
+          Web Application
+        </button>
+        <button
+          className={`filter-btn ${filter === "mobile" ? "active" : ""}`}
+          onClick={() => setFilter("mobile")}
+        >
+          Mobile Application
+        </button>
+      </div>
 
-      <div className="projects-row">
-        {projects.map((p) => (
-          <div className="project-card" key={p.id}>
-            <div className="card-inner">
-              {/* Front */}
-              <div className="card-front">
-                <img src={p.imgFront} alt={p.title + " cover"} className="front-cover" />
-                <div className="front-text">
-                  <p className="project-desc">{p.desc}</p>
-                  <h2>{p.title}</h2>
-                </div>
-              </div>
-
-              {/* Back */}
-              <div className="card-back">
-                <img src={p.imgBack} alt={p.title} className="back-img" />
-                <a href={p.github} target="_blank" rel="noreferrer" className="github-btn">
-                  🔗 View Live
+      <div className="projects-grid">
+        {currentProjects.map((project, index) => (
+          <div className="project-card" key={index}>
+            <img src={project.img} alt={project.title} className="card-image" />
+            <div className="card-content">
+              <h3>{project.title}</h3>
+              <p>{project.desc}</p>
+              <div className="card-actions">
+                <a href="#" className="action-btn repo-btn">Repository</a>
+                <a href={project.demo} target="_blank" rel="noreferrer" className="action-btn demo-btn">
+                  Demo
                 </a>
               </div>
             </div>
