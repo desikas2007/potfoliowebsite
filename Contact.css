@@ -89,3 +89,31 @@ footer {
     padding: 20px;
   }
 }
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.social-icon {
+  width: 68px;
+  height: 68px;
+  background: rgba(0, 207, 255, 0.15);
+  border: 2px solid #00cfff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00cfff;
+  font-size: 34px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 30px rgba(0, 207, 255, 0.3);
+}
+
+.social-icon:hover {
+  background: #00cfff;
+  color: #111827;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 207, 255, 0.6);
+}
