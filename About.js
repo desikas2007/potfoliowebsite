@@ -1,63 +1,47 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import "./About.css";
-
-const slides = [
-  {
-    title: "Who Am I?",
-    text: "A creative full-stack developer who loves turning ideas into interactive digital experiences.",
-  },
-  {
-    title: "My Mission",
-    text: "I build AI-inspired, intuitive, and efficient web systems that merge technology with human imagination.",
-  },
-  {
-    title: "My Skills",
-    text: "React, Firebase, Node.js, Python, C, C++, Java — each one a piece of my evolving digital toolkit.",
-  },
-  {
-    title: "My Vision",
-    text: "To craft intelligent interfaces where design, motion, and data work together like neural connections.",
-  },
-];
+import React from "react";
+import "../styles/theme.css";
+import "../styles/About.css";
+import aboutImg from "../assets/aboutimg.jpeg"; // your image
 
 export default function About() {
-  const [index, setIndex] = useState(0);
-
-  const nextSlide = () => setIndex((prev) => (prev + 1) % slides.length);
-
   return (
     <div className="about-page">
+      {/* Header */}
+      <header className="header-bar">
+        <h2 className="logo">DESIKA PORTFOLIO</h2>
+        <nav className="nav-links">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/projects">Projects</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </header>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          className="ai-slide"
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -40, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          onClick={nextSlide}
-        >
-          <h2 className="slide-title">{slides[index].title}</h2>
-          <p className="slide-text">{slides[index].text}</p>
-          <span className="slide-hint">(Tap to reveal next)</span>
-        </motion.div>
-      </AnimatePresence>
+      {/* Content */}
+      <div className="about-container">
+        {/* Left image */}
+        <div className="about-left">
+          <img src={aboutImg} alt="About" className="about-img" />
+        </div>
 
-      {/* Navigation dots */}
-      <div className="slide-dots">
-        {slides.map((_, i) => (
-          <motion.div
-            key={i}
-            className={`dot ${i === index ? "active" : ""}`}
-            animate={{
-              scale: i === index ? [1, 1.25, 1] : 1,
-              opacity: i === index ? 1 : 0.5,
-            }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        ))}
+        {/* Right text */}
+        <div className="about-right fade-in-text">
+          <h1 className="about-title">About Me</h1>
+          <p>
+            Hello! I’m <b>Desika Sekar</b>, a passionate  
+            <span className="highlight"> Full Stack Developer </span>  
+            and modern web designer.
+          </p>
+          <p>
+            I craft visually engaging, responsive websites and web experiences.
+            Using pixel-perfect design, modern UI/UX principles, and animations,
+            I turn ideas into functional digital products.
+            I specialize in transforming ideas into functional web interfaces
+            using strong design sense, responsive layouts, and modern UI/UX
+            principles. I focus on pixel-perfect design, animations, and
+            brand-aligned aesthetics.
+          </p>
+        </div>
       </div>
     </div>
   );
