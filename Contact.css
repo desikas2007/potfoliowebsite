@@ -1,3 +1,5 @@
+/* Contact.css - Final Perfect Version with Correct Alignment */
+
 .contact-page {
   width: 100%;
   height: 100vh;
@@ -25,52 +27,72 @@
   width: 100%;
 }
 
+/* ===== 1. Title Animation ===== */
 .contact-right h1 {
   font-size: 72px;
   font-weight: 900;
   color: #00cfff;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-shadow: 0 0 40px rgba(0, 207, 255, 0.7);
-  animation: sketchDrawText 2.5s ease-in-out;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  animation: sketchDrawText 1.8s ease-out forwards;
 }
 
 @keyframes sketchDrawText {
   0% { clip-path: inset(0 100% 0 0); opacity: 0; }
+  70% { opacity: 1; }
   100% { clip-path: inset(0 0 0 0); opacity: 1; }
 }
 
+/* ===== 2. Paragraph - More breathing space below ===== */
 .contact-right p {
   font-size: 22px;
   color: #cbd5e1;
   line-height: 1.7;
-  margin-bottom: 40px;
+  margin-bottom: 60px;           /* Increased gap before button */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease-out forwards;
+  animation-delay: 1.9s;
 }
 
+/* ===== 3. GET IN TOUCH Button - Perfectly centered & spaced ===== */
 .contact-email {
   font-size: 26px;
   font-weight: 700;
   color: #00cfff;
-  padding: 18px 50px;
+  padding: 20px 64px;                    /* Slightly wider, premium feel */
   background: rgba(0, 207, 255, 0.15);
   border-radius: 50px;
   display: inline-block;
+  margin: 20px 0 80px 0;                 /* Top space above & big gap below */
   transition: all 0.4s ease;
   box-shadow: 0 12px 40px rgba(0, 207, 255, 0.3);
-  animation: sketchReveal 2s ease-out 0.5s both;
+  
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease-out forwards;
+  animation-delay: 2.3s;
 }
 
 .contact-email:hover {
   background: #00cfff;
   color: #111827;
-  box-shadow: 0 20px 60px rgba(0, 207, 255, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 207, 255, 0.7);
 }
 
-/* Social Icons */
+/* ===== 4. Social Icons - Appear after button with nice gap ===== */
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 50px;
-  margin-top: 60px;
+  margin-top: 20px;                      /* Clean spacing from button → icons */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease-out forwards;
+  animation-delay: 2.7s;
 }
 
 .social-icon {
@@ -95,22 +117,30 @@
   box-shadow: 0 25px 60px rgba(0, 207, 255, 0.6);
 }
 
-/* Animations */
-@keyframes sketchReveal {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 footer {
-  margin-top: 80px;
+  margin-top: 100px auto 40px;
   color: #64748b;
   font-size: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 3.3s forwards;
 }
 
-/* Mobile */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .contact-right h1 { font-size: 56px; }
-  .contact-email { font-size: 22px; padding: 16px 40px; }
+  .contact-right h1 { font-size: 56px; margin-bottom: 24px; }
+  .contact-right p { font-size: 20px; margin-bottom: 50px; }
+  .contact-email { 
+    font-size: 22px; 
+    padding: 18px 50px; 
+    margin: 20px 0 70px 0;
+  }
   .social-icons { gap: 40px; }
   .social-icon { width: 70px; height: 70px; font-size: 34px; }
 }
