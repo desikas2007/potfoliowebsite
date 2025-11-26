@@ -41,7 +41,7 @@
   animation: float 6s ease-in-out infinite;
   
   /* THIS LINE FIXES YOUR PHOTO STRAIGHT */
-  transform: rotate(-30deg) !important;   /* Adjust 15deg → 10, 12, 18 etc. until perfect */
+  transform: rotate(-40deg) !important;   /* Adjust 15deg → 10, 12, 18 etc. until perfect */
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
