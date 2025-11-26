@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Contact.css";
-import contactImg from "../assets/contact-image.jpeg";
 
 export default function Contact() {
   const email = "desikas209@gmail.com";
@@ -10,19 +9,17 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <div className="contact-container">
-        <div className="contact-left">
-          <img src={contactImg} alt="Contact" className="contact-img" />
-        </div>
+        {/* Removed the whole left image */}
 
         <div className="contact-right">
-          <h1>GET IN TOUCH</h1>
+          <h1 className="sketch-title">GET IN TOUCH</h1>
           <p>Please contact me to discuss your project or just say hi!</p>
 
           <a href={`mailto:${email}`} className="contact-email">
             {email}
           </a>
 
-          {/* Social Icons Row – Pure SVG (no CDN needed) */}
+          {/* Social Icons */}
           <div className="social-icons">
             <a href={`mailto:${email}`} className="social-icon">
               <svg viewBox="0 0 24 24" fill="currentColor">
