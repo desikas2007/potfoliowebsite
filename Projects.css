@@ -1,30 +1,27 @@
-/* Projects.css - Perfect Staggered Animation (Title First, Rest Second) */
+/* Projects.css - Fully Visible Cards on All Devices */
 
 .projects-page {
   width: 100%;
   min-height: 100vh;
   background: #111827;
-  padding: 100px 20px 80px;
+  padding: 100px 20px 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
   box-sizing: border-box;
 }
 
-/* ========= 1. TITLE - Appears FIRST ========= */
+/* ========= 1. TITLE ========= */
 .projects-title {
-  font-size: 64px;
+  font-size: clamp(48px, 8vw, 70px);
   font-weight: 900;
   color: #00cfff;
   text-shadow: 0 0 40px rgba(0, 207, 255, 0.7);
   margin-bottom: 50px;
+  text-align: center;
 
-  /* Start hidden */
   clip-path: inset(0 100% 0 0);
   opacity: 0;
-
-  /* Big dramatic reveal - runs immediately */
   animation: sketchDrawText 2.2s ease-out forwards;
 }
 
@@ -34,16 +31,17 @@
   100% { clip-path: inset(0 0 0 0); opacity: 1; }
 }
 
-/* ========= 2. EVERYTHING ELSE - Appears SECOND ========= */
-/* Filter Buttons */
+/* ========= 2. FILTER BUTTONS ========= */
 .filter-buttons {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
   margin-bottom: 60px;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.9s ease-out forwards;
-  animation-delay: 2.5s;           /* Starts right after title */
+  animation-delay: 2.5s;
 }
 
 .filter-btn {
@@ -53,10 +51,11 @@
   border: 2px solid #00cfff;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 32px rgba(0, 207, 255, 0.3);
   transition: all 0.4s ease;
+  white-space: nowrap;
 }
 
 .filter-btn.active,
@@ -67,20 +66,26 @@
   box-shadow: 0 15px 40px rgba(0, 207, 255, 0.7);
 }
 
-/* Projects Grid */
+/* ========= 3. PROJECTS GRID - FULLY VISIBLE ========= */
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-/* Project Cards - Staggered appearance after title */
+/* Ensure exactly 3 columns on large screens, 1 on mobile */
+@media (min-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Project Card - Fully responsive & visible */
 .project-card {
-  width: 340px;
-  height: 460px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   overflow: hidden;
@@ -88,20 +93,18 @@
   border: 1px solid rgba(0, 207, 255, 0.25);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
 
-  /* Hidden → fade in one by one */
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1s ease-out forwards;
 }
 
-/* Stagger each card beautifully */
+/* Stagger animation delays */
 .project-card:nth-child(1) { animation-delay: 2.7s; }
 .project-card:nth-child(2) { animation-delay: 2.9s; }
 .project-card:nth-child(3) { animation-delay: 3.1s; }
-.project-card:nth-child(4) { animation-delay: 3.3s; }
-.project-card:nth-child(5) { animation-delay: 3.5s; }
-.project-card:nth-child(6) { animation-delay: 3.7s; }
 
 .project-card:hover {
   transform: translateY(-12px);
@@ -109,7 +112,6 @@
   box-shadow: 0 30px 70px rgba(0, 207, 255, 0.4);
 }
 
-/* Card Image & Content (unchanged but clean) */
 .card-image {
   width: 100%;
   height: 220px;
@@ -118,70 +120,90 @@
 }
 
 .card-content {
-  padding: 20px;
-  height: 240px;
+  padding: 24px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .card-content h3 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-shadow: 0 0 15px rgba(0, 207, 255, 0.4);
 }
 
 .card-content p {
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
   color: #cbd5e1;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   flex-grow: 1;
 }
 
 .card-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .action-btn {
   flex: 1;
-  padding: 11px 16px;
+  padding: 12px 16px;
   border-radius: 50px;
   font-weight: 700;
   font-size: 14px;
   text-align: center;
+  text-decoration: none;
   transition: all 0.4s ease;
 }
 
-.repo-btn   { background: rgba(0,207,255,0.15); color: #00cfff; border: 2px solid #00cfff; }
-.demo-btn   { background: #00cfff; color: #111827; }
+.repo-btn {
+  background: rgba(0,207,255,0.15);
+  color: #00cfff;
+  border: 2px solid #00cfff;
+}
+
+.demo-btn {
+  background: #00cfff;
+  color: #111827;
+}
 
 .action-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,207,255,0.5);
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animations */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile - Stack cards */
-@media (max-width: 1100px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    max-width: 380px;
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .projects-page {
+    padding: 80px 15px 100px;
   }
-  .project-card {
-    width: 100%;
-    height: 480px;
+
+  .filter-buttons {
+    gap: 12px;
   }
-  .projects-title {
-    font-size: 52px;
+
+  .filter-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h3 {
+    font-size: 22px;
   }
 }
