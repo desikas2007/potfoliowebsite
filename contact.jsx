@@ -10,8 +10,6 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <div className="contact-container">
-        {/* Removed the whole left image */}
-
         <div className="contact-right">
           <h1 className="sketch-title">CONTACT</h1>
           <p>Please contact me to discuss your project or just say hi!</p>
@@ -23,7 +21,7 @@ export default function Contact() {
 
           {/* Social Icons Row – Pure SVG */}
           <div className="social-icons">
-            {/* Mail Icon → Opens Gmail Compose */}
+            {/* Mail Icon */}
             <a 
               href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Inquiry from Portfolio&body=Hi Desika, I'd like to discuss...`} 
               target="_blank" 
