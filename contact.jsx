@@ -12,7 +12,7 @@ export default function Contact() {
       <div className="contact-container">
         <div className="contact-right">
           <h1 className="sketch-title">CONTACT</h1>
-          <p>Please contact me to discuss your project or just say hi!</p>
+          <p>Got a question? Send me a message, and I'll get back to you soon.</p>
 
           {/* Email text → Opens Google Form */}
           <a href={googleForm} target="_blank" rel="noreferrer" className="contact-email">
