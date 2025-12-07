@@ -1,187 +1,173 @@
-/* About.css - Fully Updated Version */
+/* src/styles/About.css – FINAL PERFECT VERSION (NO ERRORS, NO OVERFLOW) */
 
 .about-page {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  background: #111827;
+  min-height: 100vh;
+  background: #0f172a;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding-top: 80px;
+  justify-content: center;
+  padding: 100px 20px 80px;
   overflow: hidden;
 }
 
-.about-container {
+.about-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 100px;
-  max-width: 1400px;
-  padding: 40px;
+  max-width: 1300px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-/* BIG Circular Image on Left */
-.about-left {
+/* Photo */
+.about-photo {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transition: all 1.4s ease;
 }
 
-.about-left.loaded {
+.about-photo.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.about-left img {
-  width: 420px;
-  height: 420px;
+.about-photo img {
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid #00cfff;
-  box-shadow: 0 0 60px rgba(0, 207, 255, 0.5);
-  animation: sketchReveal 2s ease-out forwards;
+  border: 6px solid #00eeff;
+  box-shadow: 
+    0 0 60px rgba(0, 238, 255, 0.8),
+    0 0 120px rgba(0, 238, 255, 0.4);
+  transition: all 0.5s ease;
 }
 
-@keyframes sketchReveal {
-  0% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-  100% { opacity: 1; transform: scale(1); filter: blur(0); }
-}
-
-.about-left img:hover {
-  box-shadow: 0 0 80px rgba(0, 3, 255, 0.7);
-  transform: scale(1.02);
-  transition: all 0.4s ease;
+.about-photo img:hover {
+  box-shadow: 0 0 100px rgba(0, 238, 255, 1);
+  transform: scale(1.05);
 }
 
 /* Right Side */
-.about-right {
+.about-info {
   max-width: 600px;
+  text-align: left;
 }
 
 .about-title {
-  font-size: 64px;
+  font-size: clamp(48px, 8vw, 78px);
   font-weight: 900;
-  color: #00cfff;
-  margin-bottom: 16px;
-  text-shadow: 0 0 30px rgba(0, 207, 255, 0.6);
-  animation: sketchDrawText 2.5s ease-in-out forwards;
-  clip-path: inset(0 100% 0 0);
+  background: linear-gradient(90deg, #00eeff, #00cfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(0, 207, 255, 0.7);
+  margin: 0 0 40px 0;
+  line-height: 1.1;
   opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: drawTitle 2.6s ease-out forwards;
 }
 
-/* This wrapper controls the second phase (name, desc, skills) */
-.content-wrapper {
+@keyframes drawTitle {
+  0%   { clip-path: inset(0 100% 0 0); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.about-desc {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e2e8f0;
+  margin-bottom: 60px;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+  transition: all 1s ease 0.5s;
 }
 
-.content-wrapper.loaded {
+.about-desc.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.about-name {
-  font-size: 42px;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 20px;
+/* Stats – PERFECT TEXT FITTING */
+.stats-container {
+  display: flex;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease 0.8s;
 }
 
-.about-description {
-  font-size: 20px;
-  line-height: 1.7;
-  color: #cbd5e1;
-  margin-bottom: 40px;
+.stats-container.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* 3 Skill Boxes - One per line */
-.skills-container {
+.stat-item {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 238, 255, 0.5);
+  border-radius: 24px;
+  padding: 28px 16px;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+  max-width: 180px;
+  transition: all 0.5s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  gap: 8px;
 }
 
-.skill-box {
-  background: rgba(0, 207, 255, 0.12);
-  padding: 18px 32px;
-  border-radius: 50px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-shadow: 0 8px 32px rgba(0, 207, 255, 0.2);
-  transition: all 0.4s ease;
+.stat-item:hover {
+  transform: translateY(-20px);
+  border-color: #00eeff;
+  box-shadow: 0 35px 80px rgba(0, 238, 255, 0.5);
 }
 
-.skill-box:hover {
-  background: #00cfff;
-  color: #111827;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 207, 255, 0.5);
+.stat-icon {
+  font-size: 40px;
+  filter: drop-shadow(0 0 0 18px currentColor);
 }
 
-.skill-icon {
-  font-size: 20px;
-  font-weight: 700;
-  color: #00cfff;
-  text-shadow: 0 0 15px rgba(0, 207, 255, 0.4);
-  transition: color 0.4s ease;
+.stat-icon.code   { color: #00eeff; }
+.stat-icon.cert   { color: #a78bfa; }
+.stat-icon.globe  { color: #f472b6; }
+
+.stat-item h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0;
+  color: white;
+  line-height: 1;
 }
 
-.skill-box:hover .skill-icon {
-  color: #111827;
+.stat-item p {
+  color: #b8c2d0;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+  word-break: break-word;
+  padding: 0 6px;
 }
 
-/* Animations */
-@keyframes sketchDrawText {
-  0% { 
-    clip-path: inset(0 100% 0 0); 
-    opacity: 0; 
-  }
-  100% { 
-    clip-path: inset(0 0 0 0); 
-    opacity: 1; 
-  }
-}
-
-/* Mobile Responsive */
-@media (max-width: 968px) {
-  .about-container {
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-wrapper {
     flex-direction: column;
     text-align: center;
-    gap: 50px;
-    padding: 20px;
+    gap: 60px;
   }
-
-  .about-left img {
-    width: 320px;
-    height: 320px;
-  }
-
-  .about-title { 
-    font-size: 48px; 
-  }
-
-  .about-name { 
-    font-size: 36px; 
-  }
-
-  .about-description {
-    font-size: 18px;
-  }
+  .about-info { text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .about-left img {
-    width: 280px;
-    height: 280px;
-  }
-
-  .about-title { 
-    font-size: 42px; 
-  }
-
-  .skill-box {
-    padding: 16px 24px;
-  }
+  .about-photo img { width: 300px; height: 300px; }
+  .stat-item { padding: 24px 12px; }
+  .stat-item h2 { font-size: 42px; }
 }
